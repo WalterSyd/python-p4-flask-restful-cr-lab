@@ -17,7 +17,9 @@ db.init_app(app)
 api = Api(app)
 
 class Plants(Resource):
-    pass
+    def get(self):
+        plants = Plant.query.all()
+        return jsonify([plant.to_dict() for plant in plants])
 
 class PlantByID(Resource):
     pass
